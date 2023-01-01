@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3001/api'
+const baseURL = 'https://apiv2-deployed-production.up.railway.app/api'
 
 let config
 if (typeof window !== 'undefined') {
