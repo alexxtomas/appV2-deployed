@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useTheme } from 'styled-components'
+import { useAuth } from '../hooks/useAuth'
 import { useRestaurants } from '../hooks/useRestaurants'
 import {
   ToastButton1,
@@ -11,12 +13,17 @@ import {
 } from '../styles/components/DeleteConfirmationToast.style'
 import { RestaurantCardDeleteButton } from '../styles/components/RestaurantCard.styled.'
 import DeleteIcon from './icons/DeleteIcon'
+
 export default function DeleteRestaurantButton({ id }) {
   const { deleteById } = useRestaurants()
   const [clicked, setClicked] = useState(false)
+  const router = useRouter()
+  const { isAuth } = useAuth()
+
   const theme = useTheme()
   const handleClick = async (e) => {
     e.stopPropagation()
+    if (!isAuth) router.push('/auth/login')
     toast(
       (t) => (
         <ToastContainer>
