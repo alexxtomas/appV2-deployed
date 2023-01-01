@@ -55,10 +55,12 @@ export default function RestaurantsProvider({ children }) {
   }
 
   const deleteById = async (id) => {
+    setLoading(true)
     return api
       .deleteById(id)
       .then((deleted) => {
         setRestaurants((curr) => curr.filter((r) => r.name !== deleted?.name))
+        setLoading(false)
       })
       .catch(() => setError(true))
   }
