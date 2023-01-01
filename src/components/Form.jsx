@@ -62,8 +62,6 @@ export default function Form() {
         onSubmit={async (values, actions) => {
           if (id) {
             const updated = await updateById(id, values)
-            console.log(updated)
-            console.log(values)
             router.push(`/restaurants/${id}`)
           } else {
             const saved = await createOne(values)
@@ -80,7 +78,7 @@ export default function Form() {
               <Label htmlFor='neighborhood'>Neighborhood</Label>
               <Input id='neighborhood' name='neighborhood' />
               <ErrorMessage component='p' name='neighborhood' />
-              <Label htmlFor='address'>Adress</Label>
+              <Label htmlFor='address'>Address</Label>
               <Input id='address' name='address' />
               <ErrorMessage component='p' name='address' />
               <Label htmlFor='cuisineType'>Cuisine Type</Label>
