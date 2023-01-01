@@ -23,7 +23,7 @@ export default function DeleteRestaurantButton({ id }) {
   const theme = useTheme()
   const handleClick = async (e) => {
     e.stopPropagation()
-    if (!isAuth) router.push('/auth/login')
+    if (!isAuth) return router.push('/auth/login')
     toast(
       (t) => (
         <ToastContainer>
